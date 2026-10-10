@@ -5,7 +5,7 @@
 ## 환경
 
 - Python 실행 명령은 `python`(not `python3`).
-- **지침 파일은 `~/dotfiles` 레포에 있다.** `~/.claude/` 의 `CLAUDE.md`·`FLUENT_KOREAN.md`·`models/`·`rules/` 는 `~/dotfiles/claude/` 의 심링크이고, 공통 규율은 `~/dotfiles/common/GUIDELINES.md` 다. Edit/Write 도구는 심링크에 쓰지 않으므로 dotfiles 쪽 실제 경로를 편집하고 그 레포에 커밋한다. 공통 규율이나 Codex 전용 지침(`~/dotfiles/codex/AGENTS.local.md`)을 고쳤으면 `python ~/dotfiles/scripts/build_codex_agents.py` 로 Codex 지침을 다시 생성한다(커밋 훅이 누락을 막는다). `~/.claude/memory/` 와 rtk 가 생성·갱신하는 `RTK.md` 는 레포 대상이 아니다.
+- **지침 파일은 `~/dotfiles` 레포에 있다.** `~/.claude/` 의 `CLAUDE.md`·`FLUENT_KOREAN.md`·`models/`·`rules/` 는 `~/dotfiles/claude/` 의 심링크이고, 공통 규율은 `~/dotfiles/common/GUIDELINES.md` 다. Edit/Write 도구는 심링크에 쓰지 않으므로 dotfiles 쪽 실제 경로를 편집하고 그 레포에 커밋한다. 공통 규율이나 Codex 전용 지침(`~/dotfiles/codex/AGENTS.local.md`)을 고쳤으면 `python ~/dotfiles/scripts/build_codex_agents.py` 로 Codex 지침을 다시 생성한다(커밋 훅이 누락을 막는다). 클라우드 조항(`~/dotfiles/cloud/local.md`)을 고쳤으면 같은 커밋에서 README setup script 의 `dotfiles rev` 를 올리고, 클라우드 환경 설정에도 반영하라고 사용자에게 알린다. `~/.claude/memory/` 와 rtk 가 생성·갱신하는 `RTK.md` 는 레포 대상이 아니다.
 - 서브에이전트 중첩 깊이 상한은 `~/.claude/settings.json` 의 `env.CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH = "2"` 다 — 메인 루프 → 서브에이전트 → Haiku 까지만 허용하고 2층에서는 Agent 도구가 주어지지 않는다(전역 §Haiku 보조 위임).
 
 ## 외부 CLI 위임

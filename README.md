@@ -47,7 +47,7 @@ Setup script:
 ```bash
 #!/bin/bash
 set -euo pipefail
-# dotfiles rev: 1   — dotfiles 변경을 반영하려면 이 값을 올려 환경 캐시를 다시 만든다
+# dotfiles rev: 2   — dotfiles 변경을 반영하려면 이 값을 올려 환경 캐시를 다시 만든다
 git clone --depth 1 https://github.com/avillon-archive/dotfiles.git /root/dotfiles
 mkdir -p /root/.claude/rules
 for f in CLAUDE.md FLUENT_KOREAN.md models; do
@@ -60,4 +60,4 @@ npm install -g agent-browser && agent-browser install --with-deps || echo "agent
 
 `agent-browser install` 은 Chrome for Testing 버전 정보를 `googlechromelabs.github.io` 에서 받는데, 이 도메인은 Trusted 허용 목록에 없다. 네트워크 접근 수준을 Full 로 두거나, Custom 에 기본 목록을 포함하고 이 도메인을 추가한다. 브라우저 설치는 세션 시작에 필수가 아니므로 실패해도 스크립트가 0 으로 끝나게 둔다.
 
-`claude/rules/local.md` 는 이 기기에만 해당하는 조항이므로 클라우드에서는 같은 자리에 `cloud/local.md` 를 연결한다. 클라우드에는 rtk 가 없고 rtk 훅이 걸린 사용자 `settings.json` 도 읽히지 않으므로, `@RTK.md` import 가 깨지지 않도록 빈 파일만 만든다. setup script 의 결과는 환경 캐시로 저장되어 이후 세션이 재사용하므로, push 한 지침 변경은 스크립트를 수정해 캐시가 다시 만들어진 뒤에 반영된다. 연결 결과는 새 세션에서 `/context` 를 실행해 Memory files 목록으로 확인한다.
+`claude/rules/local.md` 는 이 기기에만 해당하는 조항이므로 클라우드에서는 같은 자리에 `cloud/local.md` 를 연결한다. 클라우드에는 rtk 가 없고 rtk 훅이 걸린 사용자 `settings.json` 도 읽히지 않으므로, `@RTK.md` import 가 깨지지 않도록 빈 파일만 만든다. setup script 의 결과는 환경 캐시로 저장되어 이후 세션이 재사용하므로, push 한 지침 변경은 스크립트를 수정해 캐시가 다시 만들어진 뒤에 반영된다. `cloud/local.md` 를 고치는 커밋은 위 스크립트의 `dotfiles rev` 값도 함께 올리고, 클라우드 환경 설정의 setup script 에 같은 값을 반영한다. 다른 지침 변경은 클라우드에 바로 필요할 때만 올린다. 연결 결과는 새 세션에서 `/context` 를 실행해 Memory files 목록으로 확인한다.
