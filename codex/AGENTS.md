@@ -161,7 +161,7 @@
 	- 출처 판정은 묻지 않고 `git log -S`·`git blame` 으로 확정한다. "나중에 squash" 를 전제로 쪼개지 않는다.
 - 사용자가 보고 고르겠다고 한 값은 확정 전에 커밋하지 않고, 확정되면 작업 커밋에 amend 한다.
 - `git stash` 는 사용자 명시 승인 후에만 쓴다(다른 세션의 미커밋 변경까지 치운다). 커밋은 명시한 경로만 스테이징한다(`git add -A` 금지).
-- `git worktree`(Agent 도구 `isolation: "worktree"` 포함)는 명시 요청 시에만 쓴다. 다른 rev 의 파일은 `git show <rev>:<path>` 나 `git archive` 로 스크래치패드에 꺼낸다.
+- `git worktree`(Agent 도구 `isolation: "worktree"` 포함)는 명시 요청 시에만 쓴다. `git archive`·`git clone`·복사로 만든 레포 사본에서 개발·빌드·테스트하는 것도 같은 조항의 대상이다. 다른 rev 의 파일은 `git show <rev>:<path>` 나 `git archive` 로 스크래치패드에 꺼내 읽기만 한다.
 - junction/symlink 를 포함한 디렉터리는 재귀 삭제하지 않는다 — 링크를 먼저 찾아 끊고, 해석된 대상이 의도한 범위 안인지 확인한다. → 근거: `~/.claude/memory/feedback_worktree_safety.md`
 
 # Codex 전용 지침
