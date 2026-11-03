@@ -47,7 +47,7 @@ Setup script:
 ```bash
 #!/bin/bash
 set -euo pipefail
-# dotfiles rev: 2   — dotfiles 변경을 반영하려면 이 값을 올려 환경 캐시를 다시 만든다
+# dotfiles rev: 3   — dotfiles 변경을 반영하려면 이 값을 올려 환경 캐시를 다시 만든다
 git clone --depth 1 https://github.com/avillon-archive/dotfiles.git /root/dotfiles
 mkdir -p /root/.claude/rules
 for f in CLAUDE.md FLUENT_KOREAN.md models; do
