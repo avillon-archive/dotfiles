@@ -26,6 +26,7 @@ agent-browser skills list                # electron·slack·탐색적 테스트 
 **조건**: codex CLI 런(`default_permissions="workspace-tools"`) 안에서 agent-browser 를 구동한다. 런은 샌드박스 사용자(`C:\Users\CodexSandboxOnline`)로 돌고, 그 토큰 아래에서는 Chrome 이 실행 직후 CDP 채널을 닫는다. `open` 은 `Auto-launch failed: CDP response channel closed` 로, `agent-browser doctor` 의 Launch test 는 `Browser launch failed: CDP response channel closed` 로 실패한다.
 
 - **모든 호출에 `--args '--no-sandbox'` 를 붙인다**(`agent-browser --session <이름> --args '--no-sandbox' <명령>`). 이 인자가 있으면 같은 `workspace-tools` 프로필에서 정상 구동된다 — 권한 부족이 아니므로 `danger-full-access` 로 올리지 않는다.
+- **이 인자로 띄운 브라우저는 로컬 주소(`localhost`·`127.0.0.1` 의 dev·preview 서버)만 연다.** Chrome 샌드박스가 꺼져 악성 페이지 하나가 렌더러 취약점으로 PC 를 장악할 수 있다. 외부 사이트를 열어야 하는 작업은 codex 런에 맡기지 않는다.
 - 이 오류를 "서버가 안 떠 있다"·"권한 프로필에 agent-browser 가 없다" 로 읽지 않는다. 서버 부재는 페이지 오류로 돌아오고, `workspace-tools` 프로필은 agent-browser 경로를 이미 허용한다(`~/.codex/config.toml` `[permissions.workspace-tools.filesystem]`).
 - `--executable-path` 로 ms-playwright chromium 을 지정해도 같은 오류다 — 실행 파일 문제가 아니다.
 - 샌드박스 밖(메인 루프가 직접 구동)에서는 이 인자가 필요 없다.

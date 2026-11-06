@@ -35,7 +35,7 @@ codex exec -C <작업-레포-루트> \
 ## 시각 검증 (사용자가 Luna 를 verifier 로 지정한 경우)
 
 - 브리프 형식·판정 규약은 `~/dotfiles/common/VISUAL_VERIFICATION.md` 를 따른다. 브리프에 `~/.claude/models/AGENT_BROWSER.md` 경로와 verifier 별 `--session` 이름을 적는다.
-- **모든 agent-browser 호출에 `--args '--no-sandbox'` 를 붙이라고 브리프에 적는다** — 없으면 codex 샌드박스에서 Chrome 이 뜨지 않는다(`AGENT_BROWSER.md` §codex 샌드박스).
+- **모든 agent-browser 호출에 `--args '--no-sandbox'` 를 붙이라고 브리프에 적는다** — 없으면 codex 샌드박스에서 Chrome 이 뜨지 않는다(`AGENT_BROWSER.md` §codex 샌드박스). 이 인자는 Chrome 샌드박스를 끄므로 로컬 주소만 연다는 제약도 같은 브리프에 적는다(같은 절).
 - 스크린샷을 기록하므로 `workspace-tools` 로 실행한다.
 
 ## 권한 프로필
